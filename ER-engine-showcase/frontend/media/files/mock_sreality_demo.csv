@@ -1,0 +1,10 @@
+ID,Price,Type,Energy.Score,Net.Area,Floor,District,Street,Neighborhood,Furnished,Partly.Furnished,Wheelchair,Elevator,Balcony,Terrace,Loggia,Swimming.pool,Basement,Parking,Garage,Building.material,Renovation,Date.Published,Date.Modified,Agency,Agency_Contact,lat,lon
+ID_6101,38000,3+1,4,89,3,2,Vinohradská,Vinohrady,1,0,0,1,1,0,0,0,1,0,0,Brick,Recently renovated,02.08.2026,04.08.2026,Central Estate,/adresar/central-estate,50.07652,14.43791
+ID_6102,38200,3+1,3,89,3,2,Vinohradská,Vinohrady,1,0,0,1,1,0,0,0,1,0,0,Brick,Recently renovated,03.08.2026,05.08.2026,Central Estate,/adresar/central-estate,50.07654,14.43794
+ID_6103,38500,3+1,3,90,3,2,Vinohradská,Vinohrady,1,0,0,1,1,0,0,0,1,0,0,Brick,Recently renovated,05.08.2026,06.08.2026,Urban Homes,/adresar/urban-homes,50.07649,14.43788
+ID_7201,20500,1+1,4,34,2,2,Vinohradská,Vinohrady,0,1,0,1,0,0,0,0,0,0,0,Brick,In good condition,09.08.2026,10.08.2026,Metro Reality,/adresar/metro-reality,50.0759,14.4344
+ID_7202,20200,1+1,4,33,2,2,Vinohradská,Vinohrady,0,1,0,1,0,0,0,0,0,0,0,Brick,In good condition,10.08.2026,11.08.2026,Metro Reality,/adresar/metro-reality,50.07592,14.43437
+ID_8301,27900,2+kk,2,55,5,2,Vinohradská,Vinohrady,1,0,1,1,0,1,0,0,0,1,0,Concrete/Steel,New construction,18.07.2026,20.07.2026,City Living,/adresar/city-living,50.0781,14.4412
+ID_9401,55000,4+kk,2,118,6,2,Vinohradská,Vinohrady,0,0,1,1,0,1,0,0,1,1,1,Brick,In very good condition,12.08.2026,13.08.2026,Prestige Property,/adresar/prestige-property,50.07742,14.43976
+ID_9402,55500,4+kk,2,119,6,2,Vinohradská,Vinohrady,0,0,1,1,0,1,0,0,1,1,1,Brick,In very good condition,13.08.2026,14.08.2026,Prestige Property,/adresar/prestige-property,50.07745,14.43979
+

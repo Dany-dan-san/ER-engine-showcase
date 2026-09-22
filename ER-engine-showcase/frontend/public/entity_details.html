@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed entity-resolution evidence for Sreality listings.">
+    <title>Entity Resolution Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="entity_details.css">
+</head>
+<body>
+    <main class="details-page">
+        <section class="details-shell">
+            <header class="details-header">
+                <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Back to Engine</a>
+                <h1>Entity Resolution Details</h1>
+                <p class="details-introduction">
+                    Explore the listings, graph relationships, images, and RF2 evidence behind each resolved dwelling entity.
+                    An <b>entity</b> refers to the true unique dwelling that may be represented by one or more listings/ads.
+                    Some entities are <b>singleton</b>, meaning that a unique dwelling is only represented by a single ad. 
+                    Other entities can be <b>composite</b>, meaning that a unique dwelling is represented by two or more ads.
+                </p>
+            </header>
+
+            <div class="entity-selector-shell">
+
+                <button
+                    id="entity-selector-prev"
+                    class="entity-selector-arrow is-left"
+                    type="button"
+                    aria-label="Show previous entities"
+                >
+                    <span aria-hidden="true">‹</span>
+                </button>
+
+                <nav
+                    id="entity-selector"
+                    class="entity-selector"
+                    aria-label="Resolved entities"
+                ></nav>
+
+                <button
+                    id="entity-selector-next"
+                    class="entity-selector-arrow is-right"
+                    type="button"
+                    aria-label="Show next entities"
+                >
+                    <span aria-hidden="true">›</span>
+                </button>
+
+            </div>
+
+            <section id="entity-content" class="entity-content" aria-live="polite"></section>
+        </section>
+    </main>
+
+    <dialog id="image-lightbox" class="image-lightbox" aria-label="Listing photograph">
+        <button id="close-lightbox" class="lightbox-close" type="button" aria-label="Close image">×</button>
+        <img id="lightbox-image" src="" alt="">
+        <p id="lightbox-caption"></p>
+    </dialog>
+
+    <noscript>
+        <p class="noscript-message">JavaScript is required to display the entity details.</p>
+    </noscript>
+
+    <script src="entity_details.js"></script>
+</body>
+</html>

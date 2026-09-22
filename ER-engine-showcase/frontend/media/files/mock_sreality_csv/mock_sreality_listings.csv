@@ -1,0 +1,6 @@
+Price,Type,Energy.Score,Net.Area,Floor,District,Street,Neighborhood,Furnished,Partly.Furnished,Wheelchair,Elevator,Balcony,Terrace,Loggia,Swimming.pool,Basement,Parking,Garage,Building.material,Renovation,Date.Published,Date.Modified,Agency,Agency_Contact
+25600,2+kk,7,62,5,5,Manesova,Vinohrady,1,0,0,1,0,0,0,0,0,0,0,Mixed,Recently renovated,30. 3. 2026,31. 3. 2026,REMAX Alfa,/adresar/remax-alfa-praha-nove-mesto/8152
+25900,2+kk,7,61,5,5,Manesova,Vinohrady,1,0,0,1,0,0,0,0,1,0,0,Mixed,Recently renovated,31. 3. 2026,1. 4. 2026,City Home Partners,/adresar/city-home-partners-praha/9264
+22400,2+1,6,68,3,2,Francouzska,Vinohrady,0,1,0,1,1,0,0,0,1,0,0,Brick,Renovated,28. 3. 2026,30. 3. 2026,Century 21 Ruby,/adresar/century-21-ruby-praha/7341
+22900,2+1,6,69,3,2,Francouzska,Vinohrady,0,1,0,1,1,0,0,0,1,0,0,Brick,Renovated,29. 3. 2026,2. 4. 2026,Prague Estate,/adresar/prague-estate-vinohrady/10837
+31800,3+kk,5,84,6,7,Komunardu,Holesovice,0,1,1,1,0,1,0,0,1,1,0,Brick,New building,1. 4. 2026,3. 4. 2026,Engel & Volkers Prague,/adresar/engel-volkers-prague/6429

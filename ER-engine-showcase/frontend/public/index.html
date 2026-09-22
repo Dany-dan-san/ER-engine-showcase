@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        name="description"
+        content="Machine-learning entity resolution for Sreality listings."
+    >
+
+    <title>Entity Resolution Engine for Sreality</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="page">
+
+        <nav class="main-menu" aria-label="Main navigation">
+            <a class="main-menu-link is-active" href="index.html">
+                Home
+            </a>
+
+            <a class="main-menu-link" href="methodology.html">
+                Methodology
+            </a>
+        </nav>
+
+        <section class="engine-panel">
+            <header class="hero">
+
+                <h1>Entity Resolution Engine for SReality</h1>
+
+                <p class="subtitle">
+                    Powered by a private machine learning algorithm.
+                </p>
+
+                <p class="introduction">
+                    Compare two or more listings by specifying URLs or uploading a dataset.
+                    The engine will compare all unique pairs of listings and estimate
+                    duplicate probabilities based on majority voting. Tailored
+                    for rental listings, not properties advertised for sale. Leave all fields
+                    empty and directly press the "Launch the Engine" button for the engine to
+                    launch using pre-set demo data. 
+                </p>
+            </header>
+
+            <form id="engine-form" novalidate>
+                <section class="input-section">
+                    <h2>Compare up to four listing URLs</h2>
+
+                    <p class="helper-text">
+                        Enter at least two SReality listing URLs. The third and fourth are optional.
+                        You can also use the first URL section to bulk copy-paste the 4 URLs by separating
+                        them by a comma ","
+                    </p>
+
+                    <div class="field">
+                        <label for="listing-url-1">
+                            First Sreality listing URL
+                        </label>
+
+                        <input
+                            id="listing-url-1"
+                            name="listingUrl1"
+                            type="url"
+                            inputmode="url"
+                            placeholder="Paste the URL"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="listing-url-2">
+                            Second Sreality listing URL
+                        </label>
+
+                        <input
+                            id="listing-url-2"
+                            name="listingUrl2"
+                            type="url"
+                            inputmode="url"
+                            placeholder="Paste the URL"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="listing-url-3">
+                            Third Sreality listing URL
+                        </label>
+
+                        <input
+                            id="listing-url-3"
+                            name="listingUrl3"
+                            type="url"
+                            inputmode="url"
+                            placeholder="Paste the URL (optional)"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="listing-url-4">
+                            Fourth Sreality listing URL
+                        </label>
+
+                        <input
+                            id="listing-url-4"
+                            name="listingUrl4"
+                            type="url"
+                            inputmode="url"
+                            placeholder="Paste the URL (optional)"
+                            autocomplete="off"
+                        >
+                    </div>
+                </section>
+
+                <div class="divider" aria-hidden="true">
+                    <span>or upload a file</span>
+                </div>
+
+                <section class="input-section">
+                    <h2>Upload a CSV or JSON file</h2>
+
+                    <div class="upload-box">
+                        <label class="file-button" for="listing-file">
+                            Choose file
+                        </label>
+
+                        <input
+                            id="listing-file"
+                            name="listingFile"
+                            type="file"
+                            accept=".csv,.json,text/csv,application/json"
+                        >
+
+                        <span id="file-name">No file selected</span>
+                    </div>
+
+                    <p class="helper-text">
+                        Accepted formats: CSV and JSON. Maximum size: 2 MB.
+                    </p>
+                </section>
+
+                <section class="mock-files">
+                    <div>
+                        <h2>Need an example?</h2>
+                        <p>Download a correctly formatted demonstration file.</p>
+                    </div>
+
+                    <div class="secondary-actions">
+                        <a
+                            class="secondary-button"
+                            href="media\files\mock_sreality_csv.zip"
+                            download
+                        >
+                            Download mock CSV zip
+                        </a>
+
+                        <a
+                            class="secondary-button"
+                            href="media\files\mock_sreality_json.zip"
+                            download
+                        >
+                            Download mock JSON zip
+                        </a>
+                    </div>
+                </section>
+
+                <p
+                    id="form-message"
+                    class="form-message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+                <button
+                    id="launch-button"
+                    class="launch-button"
+                    type="submit"
+                >
+                    Launch the Engine
+                </button>
+
+                <p style="text-align: center; margin-top: 25px;margin-bottom: -20px;">© 2026 Dempsey Pasternak. All rights reserved.</p>
+            </form>
+
+            <section
+                id="results"
+                class="results"
+                aria-live="polite"
+                hidden
+            >
+                <h2 class="results-title">Engine result</h2>
+                <div id="results-content"></div>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="page_transition.js"></script>
+</body>
+</html>

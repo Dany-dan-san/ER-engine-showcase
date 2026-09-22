@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Methodology behind the Entity Resolution Engine for Sreality."
+    >
+
+    <title>Methodology | Entity Resolution Engine for Sreality</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+
+    <main class="page">
+
+        <!-- =====================================================
+             MAIN NAVIGATION
+             ===================================================== -->
+
+        <nav class="main-menu" aria-label="Main navigation">
+
+            <a
+                class="main-menu-link"
+                href="index.html"
+            >
+                Home
+            </a>
+
+            <a
+                class="main-menu-link is-active"
+                href="methodology.html"
+                aria-current="page"
+            >
+                Methodology
+            </a>
+
+        </nav>
+
+
+        <!-- =====================================================
+             METHODOLOGY PANEL
+             ===================================================== -->
+
+        <section class="engine-panel methodology-panel">
+
+            <!-- =================================================
+                 PAGE HEADER
+                 ================================================= -->
+
+            <header class="hero">
+
+                <h1>
+                    How the Engine Works
+                </h1>
+
+                <p class="subtitle">
+                    From raw Sreality listings to resolved dwelling entities.
+                </p>
+
+                <p class="introduction">
+                    This page describes the methodological framework behind the
+                    Entity Resolution Engine, including listing preparation,
+                    pairwise comparison, Random Forest classification,
+                    graph-based entity resolution, and the construction of
+                    final entity-level information.
+                </p>
+
+            </header>
+
+
+        <!-- =================================================
+            METHODOLOGY CONTENT
+            ================================================= -->
+
+        <article class="methodology-content">
+
+
+            <!-- =================================================
+                1. DATA INPUT
+                ================================================= -->
+
+            <section class="methodology-section">
+
+                <div class="methodology-heading">
+                    <p class="methodology-step">1</p>
+
+                    <h2>
+                        Data Input and Preparation
+                    </h2>
+                </div>
+
+                <p>
+                    The <b>engine extracts the data</b>, either by mining it from
+                    sreality.cz or by reading it from a JSON or CSV file. The
+                    information is then structured according to the expected input
+                    framework.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                2. CANDIDATE PAIRS
+                ================================================= -->
+
+            <section class="methodology-section">
+
+                <div class="methodology-heading">
+                    <p class="methodology-step">2</p>
+
+                    <h2>
+                        Candidate-Pair Construction
+                    </h2>
+                </div>
+
+                <p>
+                    The <b>listings are regrouped by a common street</b>. Within each
+                    street group, every advertisement is compared with the other
+                    advertisements in that group. The engine then calculates the
+                    <b>feature distance</b> between the attributes of each pair
+                    (e.g., the absolute difference in Price between Ad 1 and Ad 2).
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                3. RF2 CLASSIFICATION
+                ================================================= -->
+
+            <section class="methodology-section">
+
+                <div class="methodology-heading">
+                    <p class="methodology-step">3</p>
+
+                    <h2>
+                        RF2 Duplicate Classification
+                    </h2>
+                </div>
+
+                <p>
+                    For each street, the resulting <b>pairwise distance matrix</b> is
+                    passed to a <b>Random Forest</b> model. This model, RF2, is trained
+                    on <b>974 carefully curated listing pairs</b> with a high level of
+                    human-validated confidence in their duplicate status.
+                </p>
+
+                <p>
+                    We expect the model to capture around <b>81% of all duplicate
+                    pairs (Recall)</b> and to be correct in approximately <b>83% of its
+                    positive-class predictions (Precision)</b>. RF2 returns a duplicate probability
+                    and a corresponding binary prediction for each pair of
+                    advertisements on the same street. The retained
+                    <b>cutoff threshold is .51</b>, selected to provide a strong
+                    balance between Recall and Precision.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                4. GRAPH ENTITY RESOLUTION
+                ================================================= -->
+
+            <section class="methodology-section">
+
+                <div class="methodology-heading">
+                    <p class="methodology-step">4</p>
+
+                    <h2>
+                        Graph Entity Resolution
+                    </h2>
+                </div>
+
+                <p>
+                    The <b>RF2 predictions</b> are used to construct
+                    <b>graph components</b>, where nodes represent listings and edges
+                    represent RF2 pairwise duplicate-status evidence. When
+                    <b>p ≥ .51</b>, the relationship is classified as positive;
+                    otherwise, it is classified as negative.
+                </p>
+                <ul>
+                    <li>
+                        <p style="line-height: 1.5;"><b>Components with fully positive internal relationships</b> are
+                        treated as <b>complete</b> and represent groups of duplicate
+                        advertisements referring to the same underlying dwelling.</p>
+                    </li>
+        
+                    <li>
+                        <p style="line-height: 1.5;">
+                        <b>Components containing both positive and negative internal
+                        relationships</b> are treated as <b>incomplete</b>. These
+                        components are processed by a <i>Correlation Clustering</i>
+                        algorithm, which evaluates alternative partitions of the component
+                        and seeks the solution that minimizes disagreement with the RF2
+                        pairwise evidence.</p>
+                       
+                        </li>
+                </ul>
+            </section>
+
+
+            <!-- =================================================
+                5. ENTITY-LEVEL INFORMATION
+                ================================================= -->
+
+            <section class="methodology-section">
+
+                <div class="methodology-heading">
+                    <p class="methodology-step">5</p>
+
+                    <h2>
+                        Entity-Level Weighted Information
+                    </h2>
+                </div>
+
+                <p>
+                    For each <b>final duplicate group</b> and each listing contained
+                    within that group, the engine calculates the listing's
+                    <b>average internal RF2 pairwise probability</b>. This is obtained
+                    by averaging the RF2 probabilities linking that listing to the
+                    other listings belonging to the same resolved entity.
+                </p>
+
+                <p>
+                    These internal confidence scores are then normalized into
+                    <b>listing-specific weights</b>, which determine how strongly each
+                    listing contributes to the final entity-level information
+                    (e.g., Price and Surface Area). Therefore, listings with stronger
+                    average RF2 support within the resolved entity receive a greater
+                    contribution weight.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                6. FINAL OUTPUT
+                ================================================= -->
+
+            <section class="methodology-section">
+
+                <div class="methodology-heading">
+                    <p class="methodology-step">6</p>
+
+                    <h2>
+                        Final Engine Output
+                    </h2>
+                </div>
+
+                <p>
+                    The <b>engine returns the final resolved entities</b>.
+                    <b>Each entity represents one unique dwelling</b> and may contain
+                    one or several Sreality listings associated with that dwelling.
+                    For example, a single dwelling entity may contain five duplicate
+                    advertisements published at different times or by different
+                    agencies.
+                </p>
+
+                <p>
+                    The demonstration interface allows each resolved entity to be
+                    reviewed in detail, including its constituent listings, RF2
+                    pairwise evidence, graph-resolution information, listing images,
+                    and final entity-level weighted information.
+                </p>
+                <p style="text-align: center; margin-top: 35px;margin-bottom: -20px;">© 2026 Dempsey Pasternak. All rights reserved.</p>
+            </section>
+
+
+        </article>
+
+        </section>
+
+    </main>
+    <script src="page_transition.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+httpx
+beautifulsoup4
+pandas
+pydantic
+playwright
+joblib
+python-multipart
+pyomo
