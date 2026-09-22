@@ -1,0 +1,9 @@
+## License
+
+This repository is licensed under the PolyForm Noncommercial License 1.0.0.
+
+Noncommercial use, study, modification, and distribution are permitted under
+the terms of that license. Commercial use requires prior written permission
+and a separate commercial license from the copyright holder.
+
+Copyright © 2026 Dempsey Pasternak.
